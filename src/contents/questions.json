@@ -1,0 +1,50 @@
+[
+  {
+    "question": "Python에서 변수를 선언하는 방법은? (점수: 10점)",
+    "correctAnswer": "2",
+    "score" : "10",
+    "choices" : [
+      "var name",
+      "name = value",
+      "set name",
+      "name == value"
+    ]
+  },
+
+  {
+    "question": "Python에서 리스트(List)의 특징은 무엇인가요? (점수: 15점)",
+    "correctAnswer": "1",
+    "score" : "15",
+    "choices" : [
+      "순서가 있고 변경 가능하다",
+      "중복된 값을 가질 수 없다",
+      "원소를 추가하거나 삭제할 수 없다",
+      "정렬된 상태로 유지된다"
+    ]
+  },
+
+  {
+    "question": "Python에서 조건문을 작성하는 방법은? (점수: 10점)",
+    "correctAnswer": "1",
+    "score" : "10",
+    "choices" : [
+      "if-else",
+      "for-in",
+      "while",
+      "def"
+    ]
+  },
+
+  {
+    "question": "Python에서 함수를 정의하는 방법은? (점수: 5점)",
+    "correctAnswer": "2",
+    "score" : "5",
+    "choices" : [
+      "class",
+      "def",
+      "import",
+      "return"
+    ]
+  }
+
+]
