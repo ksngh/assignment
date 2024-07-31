@@ -11,15 +11,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class SolvingQuestion {
+public class solving_question {
 
 	Scanner scanner;
-	Question question;
+	question question;
 	ArrayList<Integer> answers = new ArrayList<>();
 
 
 	// 문제 생성하기
-	public Question generateQuestion(int num) throws IOException, ParseException {
+	public question generateQuestion(int num) throws IOException, ParseException {
 
 		// JSON 파싱하기
 		JSONParser parser = new JSONParser();
@@ -39,7 +39,7 @@ public class SolvingQuestion {
 
 		ArrayList<String> choices = (ArrayList<String>)jsonObject.get("choices");
 
-		Question question = new Question(content, num, correctAnswer,score,choices);
+		question question = new question(content, num, correctAnswer,score,choices);
 
 		return question;
 	}
@@ -85,7 +85,7 @@ public class SolvingQuestion {
 	}
 
 	// 문제 채점 후 점수 반환
-	private int validation(Question question){
+	private int validation(question question){
 		if(question.getUserAnswer()== question.getCorrectAnswer()){
 			return question.getScore();
 		}else{
