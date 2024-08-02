@@ -2,12 +2,17 @@ import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
 
-import question.solving_question;
+import question.QuestionUtil;
+import question.Solving;
 
-public class solving_problems_seongho {
+public class SolvingQuestions {
+
+
 	public static void main(String[] args) throws IOException, ParseException {
 
-		solving_question solvingquestion = new solving_question();
+		QuestionUtil questionUtil = new QuestionUtil();
+
+		Solving solvingquestion = new Solving(questionUtil);
 		solvingquestion.solvingQuestion();
 
 	}

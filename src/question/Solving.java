@@ -1,31 +1,30 @@
 package question;
 
-import java.io.FileReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.Reader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.BufferedReader;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class solving_question {
+public class Solving {
 
-	Scanner scanner;
-	question question;
+	BufferedReader bufferedReader;
+	Question question;
 	ArrayList<Integer> answers = new ArrayList<>();
 
+	private final QuestionUtil questionUtil;
+
+	public Solving(QuestionUtil questionUtil) {
+		this.questionUtil = questionUtil;
+	}
 
 	// 문제 생성하기
-	public question generateQuestion(int num) throws IOException, ParseException {
+	public Question generateQuestion(int num , JSONArray jsonArray) {
 
-		// JSON 파싱하기
-		JSONParser parser = new JSONParser();
-		Reader reader = new FileReader("./src/contents/questions.json");
-		Object jsonObj = parser.parse(reader);
-		JSONArray jsonArray = (JSONArray) jsonObj;
 		JSONObject jsonObject = (JSONObject) jsonArray.get(num);
 
 		// Question 객체 생성 및 반환
@@ -39,7 +38,7 @@ public class solving_question {
 
 		ArrayList<String> choices = (ArrayList<String>)jsonObject.get("choices");
 
-		question question = new question(content, num, correctAnswer,score,choices);
+		Question question = new Question(content, num, correctAnswer,score,choices);
 
 		return question;
 	}
@@ -48,9 +47,12 @@ public class solving_question {
 
 		int totalScore = 0;
 
+		// 문제 파싱
+		JSONArray jsonArray = questionUtil.extractQuestions();
+
 		// 문제 수 만큼 반복
-		for (int i = 0; i < 4; i++) {
-			question = generateQuestion(i);
+		for (int i = 0; i < jsonArray.size(); i++) {
+			question = generateQuestion(i,jsonArray);
 			ArrayList<String> choices = question.getChoices();
 
 			System.out.println(question.getQuestion());
@@ -61,8 +63,9 @@ public class solving_question {
 				" 4) " + choices.get(3));
 			System.out.println("-정답 :");
 
-			scanner = new Scanner(System.in);
-			int answer = scanner.nextInt();
+			bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+			int answer = Integer.parseInt(bufferedReader.readLine());
+
 			System.out.println(answer);
 
 			answers.add(answer);
@@ -85,7 +88,7 @@ public class solving_question {
 	}
 
 	// 문제 채점 후 점수 반환
-	private int validation(question question){
+	private int validation(Question question){
 		if(question.getUserAnswer()== question.getCorrectAnswer()){
 			return question.getScore();
 		}else{

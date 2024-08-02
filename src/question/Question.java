@@ -2,7 +2,7 @@ package question;
 
 import java.util.ArrayList;
 
-public class question {
+public class Question {
 	private String question;
 	private int num;
 	private int userAnswer;
@@ -36,7 +36,7 @@ public class question {
 		this.userAnswer = userAnswer;
 	}
 
-	public question(String question, int num, int correctAnswer,int score,ArrayList<String> choices) {
+	public Question(String question, int num, int correctAnswer,int score,ArrayList<String> choices) {
 		this.question = question;
 		this.num = num;
 		this.correctAnswer = correctAnswer;
